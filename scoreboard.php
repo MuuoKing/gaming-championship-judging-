@@ -19,19 +19,6 @@ $stmt = $pdo->query("
 ");
 $participants = $stmt->fetchAll();
 
-// Function to get detailed judge scores for a participant
-function getJudgeScores($pdo, $participantId) {
-    $stmt = $pdo->prepare("
-        SELECT j.judge_display_name, j.judge_username, s.score_value, s.score_created_at
-        FROM scores s
-        JOIN judges j ON s.score_judge_id = j.judge_id
-        WHERE s.score_participant_id = ?
-        ORDER BY s.score_created_at DESC
-    ");
-    $stmt->execute([$participantId]);
-    return $stmt->fetchAll();
-}
-
 $pageTitle = 'Live Scoreboard - Gaming Championship';
 $bodyClass = 'scoreboard-page';
 include 'includes/header.php';
@@ -79,9 +66,6 @@ include 'includes/header.php';
                                 else if ($displayScore >= 80) $scoreClass = 'score-good';
                                 else if ($displayScore >= 70) $scoreClass = 'score-average';
                                 else $scoreClass = 'score-below-average';
-
-                                // Get detailed judge scores for this participant
-                                $judgeScores = getJudgeScores($pdo, $participant['participant_id']);
                             ?>
                             <div class="ranking-item <?php echo $medalClass; ?>">
                                 <div class="ranking-content">
@@ -102,39 +86,6 @@ include 'includes/header.php';
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <?php 
-                                        // Only show judge scores section if there are scores
-                                        if (!empty($judgeScores)): ?>
-                                            <div class="judge-scores-breakdown">
-                                                <h4 class="breakdown-title">
-                                                    <i class="fas fa-gavel"></i> Judge Scores
-                                                </h4>
-                                                <div class="judge-scores-grid">
-                                                    <?php foreach ($judgeScores as $judgeScore): ?>
-                                                        <?php
-                                                            $judgeScoreClass = '';
-                                                            if ($judgeScore['score_value'] >= 90) $judgeScoreClass = 'judge-score-excellent';
-                                                            else if ($judgeScore['score_value'] >= 80) $judgeScoreClass = 'judge-score-good';
-                                                            else if ($judgeScore['score_value'] >= 70) $judgeScoreClass = 'judge-score-average';
-                                                            else $judgeScoreClass = 'judge-score-below-average';
-                                                        ?>
-                                                        <div class="judge-score-item">
-                                                            <div class="judge-info">
-                                                                <span class="judge-name"><?php echo h($judgeScore['judge_display_name']); ?></span>
-                                                                <span class="judge-username">@<?php echo h($judgeScore['judge_username']); ?></span>
-                                                            </div>
-                                                            <div class="judge-score <?php echo $judgeScoreClass; ?>">
-                                                                <?php echo $judgeScore['score_value']; ?>
-                                                            </div>
-                                                            <div class="score-timestamp">
-                                                                <?php echo date('M j, g:i A', strtotime($judgeScore['score_created_at'])); ?>
-                                                            </div>
-                                                        </div>
-                                                    <?php endforeach; ?>
-                                                </div>
-                                            </div>
-                                        <?php endif; ?>
 
                                         <div class="progress-bar">
                                             <div class="progress" style="width: <?php echo $progressWidth; ?>%"></div>
