@@ -347,7 +347,7 @@ document.addEventListener("DOMContentLoaded", () => {
   updateScoreboard()
 
   // Set up periodic updates (every 3 seconds for full refresh)
-  setInterval(updateScoreboard, 3000)
+  setInterval(updateScoreboard, 30000)
 
   // Set up real-time update checking (every 10 seconds)
   setInterval(checkForUpdates, 10000)
