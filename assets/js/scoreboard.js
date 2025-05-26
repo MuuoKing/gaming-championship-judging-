@@ -278,7 +278,7 @@ document.addEventListener("DOMContentLoaded", () => {
               judgeScores: (judgeData && judgeData.success && Array.isArray(judgeData.scores)) ? judgeData.scores : [],
             }))
             .catch((error) => {
-              console.error(`Error fetching judge scores for participant ${participant.id}:`, error)
+              //console.error(`Error fetching judge scores for participant ${participant.id}:`, error)
               return { participant, judgeScores: [] }
             })
         )
@@ -347,7 +347,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //updateScoreboard()
 
   // Set up periodic updates (every 3 seconds for full refresh)
-  setInterval(updateScoreboard, 30000)
+  setInterval(updateScoreboard, 100000)
 
   // Set up real-time update checking (every 10 seconds)
   setInterval(checkForUpdates, 10000)
