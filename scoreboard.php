@@ -133,11 +133,6 @@ include 'includes/header.php';
                                                     <?php endforeach; ?>
                                                 </div>
                                             </div>
-                                        <?php else: ?>
-                                            <!--<div class="no-scores">
-                                                <i class="fas fa-clock"></i>
-                                                <span>No scores submitted yet</span>
-                                            </div>-->
                                         <?php endif; ?>
 
                                         <div class="progress-bar">
