@@ -134,10 +134,10 @@ include 'includes/header.php';
                                                 </div>
                                             </div>
                                         <?php else: ?>
-                                            <div class="no-scores">
+                                            <!--<div class="no-scores">
                                                 <i class="fas fa-clock"></i>
                                                 <span>No scores submitted yet</span>
-                                            </div>
+                                            </div>-->
                                         <?php endif; ?>
 
                                         <div class="progress-bar">
