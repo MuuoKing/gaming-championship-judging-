@@ -103,8 +103,9 @@ include 'includes/header.php';
                                             </div>
                                         </div>
 
-                                        <!-- Judge Scores Breakdown -->
-                                        <?php if (count($judgeScores) > 0): ?>
+                                        <?php 
+                                        // Only show judge scores section if there are scores
+                                        if (!empty($judgeScores)): ?>
                                             <div class="judge-scores-breakdown">
                                                 <h4 class="breakdown-title">
                                                     <i class="fas fa-gavel"></i> Judge Scores
