@@ -1,0 +1,44 @@
+# Local database configuration
+includes/dbConnection.local.php
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+
+# Cache files
+cache/
+
+# Uploaded files
+uploads/
+
+# Backup files
+*.bak
+*.backup
+
+# Node modules (if any)
+node_modules/
+
+# Composer vendor (if any)
+vendor/
+
+# Local development files
+*.local
