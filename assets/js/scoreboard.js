@@ -264,7 +264,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // Get all judge scores for all participants - FIXED: Uncommented and corrected
-        const participantPromises = data.participants.map((participant) =>
+        /*const participantPromises = data.participants.map((participant) =>
           fetch(`api/get_judge_scores.php?participant_id=${participant.id}`)
             .then((response) => {
               if (!response.ok) {
@@ -281,7 +281,7 @@ document.addEventListener("DOMContentLoaded", () => {
               //console.error(`Error fetching judge scores for participant ${participant.id}:`, error)
               return { participant, judgeScores: [] }
             })
-        )
+        )*/
 
         Promise.all(participantPromises).then((participantsWithScores) => {
           const existingParticipants = document.querySelectorAll("[data-participant-id]")
