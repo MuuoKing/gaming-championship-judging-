@@ -14,7 +14,9 @@ A comprehensive web-based judging system for gaming tournaments that allows admi
 - URL: [Admin Panel](https://gaming-championship-judging-production.up.railway.app/admin/login.php)
 
 **Judge Access:**
-- Username: `judge1`, `judge2`, `judge3`, `judge4`, or `judge5`
+- Username: `judge1`
+- Password: `12345678`
+- Username: `judge2`, `judge3`, `judge4`, or `judge5`
 - Password: `P%ssw2rd` (will prompt to change on first login)
 - URL: [Judge Portal](https://gaming-championship-judging-production.up.railway.app/judges/login.php)
 
@@ -57,7 +59,7 @@ A comprehensive web-based judging system for gaming tournaments that allows admi
 ## 🛠 Technology Stack
 
 - **Backend**: PHP 7.4+
-- **Database**: MySQL 5.7+ (local) / PostgreSQL 13+ (cloud deployment)
+- **Database**: MySQL 5.7+ 
 - **Frontend**: HTML5, CSS3, JavaScript (ES6+)
 - **Styling**: Custom CSS with CSS Grid, Flexbox, and CSS Variables
 - **Icons**: Font Awesome 6.4.0
@@ -67,7 +69,7 @@ A comprehensive web-based judging system for gaming tournaments that allows admi
 ## 📋 Prerequisites
 
 - PHP 7.4 or higher with PDO extension
-- MySQL 5.7+ or PostgreSQL 13+
+- MySQL 5.7+ 
 - Web server (Apache/Nginx) or PHP built-in server
 - Modern web browser with JavaScript enabled
 - Git (for cloning the repository)
@@ -85,11 +87,11 @@ cd gaming-championship-judging
 ### 2. Database Setup
 
 **Option A: Automatic Setup (Recommended)**
-1. Create a MySQL database named `judging_dei`
-2. Update database credentials in `includes/dbConnection.php`:
+1. Create a MySQL database named `judging_system`
+2. Update database credentials in `includes/dbConnection.php` and `setup.php`:
    ```php
    $host = 'localhost';
-   $dbname = 'judging_dei';
+   $dbname = 'judging_system';
    $username = 'your_username';
    $password = 'your_password';
    ```
@@ -182,7 +184,7 @@ CREATE TABLE scores (
 );
 ```
 
-### Audit Tables (Optional - for change tracking)
+### Audit Tables (For change tracking)
 
 ```sql
 -- Audit tables track all changes for accountability
@@ -266,7 +268,6 @@ gaming-championship-judging/
 
 **4. Flexible Scoring System**
 - One score per judge-participant combination (enforced by unique constraint)
-- Scores can be updated (judges can revise their scores)
 - Integer scores (1-100) with database-level validation
 
 ### PHP Architecture Decisions
@@ -292,7 +293,6 @@ gaming-championship-judging/
 
 **4. Environment Flexibility**
 - Automatic detection of local vs. production environments
-- Support for both MySQL (local) and PostgreSQL (cloud)
 - Environment variable configuration for deployment
 - Automatic database setup for demo purposes
 
@@ -360,12 +360,7 @@ git push origin main
 # 4. Deploy automatically
 ```
 
-### Render (PostgreSQL)
-```bash
-# 1. Update database connection for PostgreSQL
-# 2. Create PostgreSQL database on Render
-# 3. Deploy web service with environment variables
-```
+
 
 ### Local Development
 ```bash
@@ -393,7 +388,6 @@ php -S localhost:8000
 - [ ] Search for participants
 - [ ] Submit scores using slider
 - [ ] Update existing scores
-- [ ] Verify real-time feedback
 
 **Scoreboard Testing:**
 - [ ] View live rankings
@@ -414,7 +408,7 @@ php -S localhost:8000
 
 **Database Connection Errors:**
 - Check database credentials in `includes/dbConnection.php`
-- Ensure MySQL/PostgreSQL service is running
+- Ensure MySQL service is running
 - Verify database exists and user has proper permissions
 
 **Permission Denied:**
@@ -438,7 +432,6 @@ php -S localhost:8000
 
 If given more development time, the following features would significantly enhance the system:
 
-### High Priority Features
 
 **1. Advanced Tournament Management**
 - **Multi-Tournament Support**: Handle multiple concurrent tournaments
@@ -448,17 +441,13 @@ If given more development time, the following features would significantly enhan
 
 **2. Enhanced Real-time Features**
 - **WebSocket Integration**: True real-time updates without polling
-- **Live Notifications**: Push notifications for score updates
-- **Real-time Chat**: Communication between judges and admins
 - **Live Streaming Integration**: Embed tournament streams
 
 **3. Advanced Analytics & Reporting**
-- **Judge Agreement Analysis**: Statistical analysis of judge consistency
 - **Performance Trends**: Historical participant performance tracking
 - **Export Functionality**: PDF reports, CSV exports, Excel integration
 - **Custom Dashboards**: Configurable analytics views
 
-### Medium Priority Features
 
 **4. User Experience Improvements**
 - **Mobile App**: Native iOS/Android applications
@@ -478,7 +467,6 @@ If given more development time, the following features would significantly enhan
 - **Plugin System**: Extensible architecture for custom features
 - **SSO Integration**: Single sign-on with popular providers
 
-### Low Priority Features
 
 **7. Social & Community Features**
 - **Public Voting**: Audience participation in scoring
@@ -512,7 +500,7 @@ This project is provided as-is for educational and tournament use. Please ensure
 
 ## 📞 Support
 
-For issues, questions, or contributions:
+For issues, questions or contributions:
 1. Check the troubleshooting section above
 2. Review the code comments for implementation details
 3. Create an issue on GitHub with detailed information
@@ -522,7 +510,7 @@ For issues, questions, or contributions:
 
 **Built with ❤️ for the gaming community**
 
-*This system demonstrates modern web development practices with PHP, real-time features, and responsive design. Perfect for gaming tournaments, competitions, and educational purposes.*
+*This system demonstrates modern web development practices with PHP, real-time features and responsive design. Perfect for gaming tournaments, competitions and educational purposes.*
 ```
 
 This comprehensive README provides everything needed to understand, set up, and deploy your Gaming Championship Judging System. It includes clear setup instructions, complete database schema, design rationale, and a roadmap for future enhancements.
