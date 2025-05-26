@@ -344,7 +344,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.updateScoreboard = updateScoreboard
 
   // Initial load
-  updateScoreboard()
+  //updateScoreboard()
 
   // Set up periodic updates (every 3 seconds for full refresh)
   setInterval(updateScoreboard, 30000)
