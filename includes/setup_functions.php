@@ -1,6 +1,6 @@
 <?php
 /**
- * Setup functions for creating demo data
+ * Setup functions for creating demo data (MySQL)
  */
 
 function createTablesIfNotExists($pdo) {
@@ -80,8 +80,8 @@ function insertDemoData($pdo) {
         $stmt->execute();
         if ($stmt->fetchColumn() == 0) {
             $hashedPassword = password_hash('password', PASSWORD_DEFAULT);
-            $stmt = $pdo->prepare("INSERT INTO admins (admin_username, admin_password) VALUES ('admin', ?)");
-            $stmt->execute([$hashedPassword]);
+            $stmt = $pdo->prepare("INSERT INTO admins (admin_username, admin_password) VALUES (?, ?)");
+            $stmt->execute(['admin', $hashedPassword]);
         }
 
         // Insert demo judges

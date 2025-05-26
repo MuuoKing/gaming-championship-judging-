@@ -1,13 +1,13 @@
 <?php
 /**
  * Database Connection with Environment Detection
- * Supports both local MySQL and Render MySQL deployment
+ * Supports local MySQL and Railway MySQL deployment
  */
 
-// Check if we're on Render (environment variables are set)
-if (isset($_ENV['DATABASE_URL']) || getenv('DATABASE_URL')) {
-    // Parse DATABASE_URL for Render MySQL
-    $databaseUrl = $_ENV['DATABASE_URL'] ?? getenv('DATABASE_URL');
+// Check if we're on Railway (environment variables are set)
+if (isset($_ENV['MYSQL_URL']) || getenv('MYSQL_URL')) {
+    // Parse MYSQL_URL for Railway
+    $databaseUrl = $_ENV['MYSQL_URL'] ?? getenv('MYSQL_URL');
     $dbParts = parse_url($databaseUrl);
     
     $host = $dbParts['host'];
@@ -15,6 +15,14 @@ if (isset($_ENV['DATABASE_URL']) || getenv('DATABASE_URL')) {
     $dbname = ltrim($dbParts['path'], '/');
     $username = $dbParts['user'];
     $password = $dbParts['pass'];
+    
+} elseif (isset($_ENV['MYSQLHOST']) || getenv('MYSQLHOST')) {
+    // Alternative Railway MySQL format
+    $host = $_ENV['MYSQLHOST'] ?? getenv('MYSQLHOST');
+    $port = $_ENV['MYSQLPORT'] ?? getenv('MYSQLPORT') ?? 3306;
+    $dbname = $_ENV['MYSQLDATABASE'] ?? getenv('MYSQLDATABASE');
+    $username = $_ENV['MYSQLUSER'] ?? getenv('MYSQLUSER');
+    $password = $_ENV['MYSQLPASSWORD'] ?? getenv('MYSQLPASSWORD');
     
 } else {
     // Local development settings
