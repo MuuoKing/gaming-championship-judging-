@@ -136,12 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       `
     } else {
-      judgeScoresHtml = `
-        <div class="no-scores">
-          <i class="fas fa-clock"></i>
-          <span>No scores submitted yet</span>
-        </div>
-      `
+      
     }
 
     return `
