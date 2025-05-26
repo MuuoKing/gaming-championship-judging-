@@ -263,7 +263,7 @@ document.addEventListener("DOMContentLoaded", () => {
           refreshCountElement.textContent = `Last updated: ${refreshCount} ${refreshCount === 1 ? "time" : "times"}`
         }
 
-        // Get all judge scores for all participants - FIXED: Uncommented and corrected
+        // Get all judge scores for all participants
         const participantPromises = data.participants.map((participant) =>
           fetch(`api/get_judge_scores.php?participant_id=${participant.id}`)
             .then((response) => {
