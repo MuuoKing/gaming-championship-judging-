@@ -38,5 +38,5 @@ A comprehensive web-based judging system for gaming tournaments that allows admi
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/gaming-championship-judging.git
+   git clone https://github.com/MuuoKing/gaming-championship-judging.git
    cd gaming-championship-judging
