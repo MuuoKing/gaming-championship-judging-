@@ -59,7 +59,7 @@ include '../includes/header.php';
         </div>
         <div class="card-content">
             <?php if ($error): ?>
-                <div class="error-message"><?php echo h($error); ?></div>
+                <div class="error-message">Confirm your credentials</div>
             <?php endif; ?>
             
             <form method="POST" action="login.php">
