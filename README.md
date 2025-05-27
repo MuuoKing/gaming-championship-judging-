@@ -61,10 +61,10 @@ A comprehensive web-based judging system for gaming tournaments that allows admi
 - **Backend**: PHP 7.4+
 - **Database**: MySQL 5.7+ 
 - **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-- **Styling**: Custom CSS with CSS Grid, Flexbox, and CSS Variables
+- **Styling**: Custom CSS with CSS Grid, Flexbox and CSS Variables
 - **Icons**: Font Awesome 6.4.0
 - **AJAX**: Vanilla JavaScript with Fetch API
-- **Deployment**: Railway (MySQL) / Render (PostgreSQL)
+- **Deployment**: Railway (MySQL
 
 ## 📋 Prerequisites
 
@@ -80,8 +80,8 @@ A comprehensive web-based judging system for gaming tournaments that allows admi
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/gaming-championship-judging.git
-cd gaming-championship-judging
+git clone https://github.com/MuuoKing/gaming-championship-judging-.git
+cd gaming-championship-judging-
 ```
 
 ### 2. Database Setup
