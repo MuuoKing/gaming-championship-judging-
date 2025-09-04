@@ -1,4 +1,253 @@
-!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirect Fix Solution</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            margin-top: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #fdbb2d;
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            color: #fdbb2d;
+            margin: 25px 0 15px;
+            border-bottom: 2px solid #fdbb2d;
+            padding-bottom: 8px;
+        }
+        
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .code-container {
+            background: #2c3e50;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+        }
+        
+        code {
+            color: #fdbb2d;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .solution-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 4px solid #fdbb2d;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #fdbb2d;
+            color: #1a2a6c;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #ffcc44;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .server-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .server-card {
+            flex: 1;
+            min-width: 250px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        
+        .server-card h3 {
+            color: #fdbb2d;
+            margin-bottom: 15px;
+        }
+        
+        ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        .important {
+            color: #ff9966;
+            font-weight: bold;
+        }
+        
+        .redirect-test {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .server-info {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>HTML Redirect Issue Solution</h1>
+        
+        <p>If your HTML file is downloading instead of redirecting, it's likely being served with an incorrect MIME type or you're opening it directly from the filesystem. Here's how to fix it:</p>
+        
+        <div class="solution-card">
+            <h2>Correct HTML Redirect Code</h2>
+            <p>Here's the proper HTML code to redirect to index.php:</p>
+            <div class="code-container">
+                <code>
+                    &lt;!DOCTYPE html&gt;<br>
+                    &lt;html lang="en"&gt;<br>
+                    &lt;head&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;meta charset="UTF-8"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;meta http-equiv="refresh" content="0; url=index.php"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Redirecting to index.php...&lt;/title&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;script&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window.location.href = "index.php";<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;/script&gt;<br>
+                    &lt;/head&gt;<br>
+                    &lt;body&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;noscript&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;JavaScript is disabled. Click &lt;a href="index.php"&gt;here&lt;/a&gt; to go to index.php.&lt;/p&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;/noscript&gt;<br>
+                    &lt;/body&gt;<br>
+                    &lt;/html&gt;
+                </code>
+            </div>
+            <button class="btn" onclick="copyCode()">Copy Code</button>
+        </div>
+        
+        <div class="solution-card">
+            <h2>Why Is This Happening?</h2>
+            <p>Your HTML file might be downloading instead of redirecting because:</p>
+            <ul>
+                <li>You're opening the HTML file directly from your filesystem (double-clicking it)</li>
+                <li>The web server is configured incorrectly</li>
+                <li>The server is sending wrong MIME types for HTML files</li>
+                <li>There's a browser configuration issue</li>
+            </ul>
+        </div>
+        
+        <h2>Solutions</h2>
+        
+        <div class="server-info">
+            <div class="server-card">
+                <h3>Solution 1: Use a Local Server</h3>
+                <p>Instead of opening the HTML file directly, serve it through a local web server:</p>
+                <ul>
+                    <li>Use XAMPP, WAMP, or MAMP</li>
+                    <li>Use Python's built-in server: <code>python -m http.server</code></li>
+                    <li>Use Node.js live-server or http-server</li>
+                    <li>Place your file in the server's document root</li>
+                </ul>
+                <button class="btn" onclick="alert('For PHP-based redirect solutions, you need to run your code through a web server with PHP support.');">PHP Server Info</button>
+            </div>
+            
+            <div class="server-card">
+                <h3>Solution 2: Configure Your Server</h3>
+                <p>If you have access to server configuration:</p>
+                <ul>
+                    <li>Ensure .html files are served with <code>text/html</code> MIME type</li>
+                    <li>For Apache, check your .htaccess file</li>
+                    <li>For Nginx, check your server block configuration</li>
+                </ul>
+                <p class="important">If you're using a web host, contact their support for assistance with MIME type configuration.</p>
+            </div>
+        </div>
+        
+        <div class="solution-card">
+            <h2>PHP Alternative</h2>
+            <p>If you have PHP support, you can create a PHP redirect file instead:</p>
+            <div class="code-container">
+                <code>
+                    &lt;?php<br>
+                    header("Location: index.php");<br>
+                    exit;<br>
+                    ?&gt;
+                </code>
+            </div>
+            <p>Save this as a .php file (e.g., redirect.php) and it will redirect to index.php when accessed.</p>
+        </div>
+        
+        <div class="redirect-test">
+            <h2>Test Redirect</h2>
+            <p>Click the button below to test the JavaScript redirect method:</p>
+            <button class="btn" onclick="window.location.href = 'index.php'">Test Redirect to index.php</button>
+            <p class="important">Note: This will only work if index.php exists in the same directory.</p>
+        </div>
+    </div>
+
+    <script>
+        function copyCode() {
+            const code = `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,11 +255,27 @@
     <title>Redirecting to index.php...</title>
     <script>
         window.location.href = "index.php";
-    </script>
+   <\/script>
 </head>
 <body>
     <noscript>
         <p>JavaScript is disabled. Click <a href="index.php">here</a> to go to index.php.</p>
     </noscript>
+</body>
+</html>`;
+            
+            navigator.clipboard.writeText(code).then(() => {
+                alert('Redirect code copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+        
+        // Provide helpful message if redirect test fails
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('redirect') === 'failed') {
+            alert('Redirect test failed. Make sure index.php exists in the same directory and you are using a web server.');
+        }
+    </script>
 </body>
 </html>
